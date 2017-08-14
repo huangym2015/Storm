@@ -1,4 +1,4 @@
-package org.ian.myec.simple;
+package org.ian.myec.example;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

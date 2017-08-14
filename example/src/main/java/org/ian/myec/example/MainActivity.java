@@ -1,4 +1,4 @@
-package org.ian.myec.simple;
+package org.ian.myec.example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
