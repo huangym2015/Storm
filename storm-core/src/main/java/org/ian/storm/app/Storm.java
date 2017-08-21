@@ -21,6 +21,9 @@ public final class Storm {
     public static Context getApplication(){
         return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
     }
+    public static Context getApplicationContext(){
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
 }
 
 

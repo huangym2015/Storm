@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--创建一个dialog-->
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <!--去掉边框-->
         <item name="android:windowFrame">@null</item>
