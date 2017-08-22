@@ -13,7 +13,7 @@ import org.ian.storm.app.Storm;
 public class DimenUtil {
     //获取屏宽
     public static int getScreenWidth(){
-        final Resources resources = Storm.getApplication().getResources();
+        final Resources resources = Storm.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
 
         return dm.widthPixels;
@@ -21,7 +21,7 @@ public class DimenUtil {
 
     //获取屏高
     public static int getScreenHeight(){
-        final Resources resources = Storm.getApplication().getResources();
+        final Resources resources = Storm.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
 
         return dm.heightPixels;
