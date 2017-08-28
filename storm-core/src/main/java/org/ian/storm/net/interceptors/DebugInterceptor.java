@@ -15,17 +15,18 @@ import okhttp3.ResponseBody;
  * Created by ian on 2017/8/22.
  */
 
-public class DebugInteceptor extends BaseInterceptor {
+public class DebugInterceptor extends BaseInterceptor {
 
     private final String DEBUG_URL;
     private final int DEBUG_RAW_ID;
 
-    public DebugInteceptor(String debugUrl, int rawid) {
+    public DebugInterceptor(String debugUrl, int rawid) {
         this.DEBUG_URL = debugUrl;
         this.DEBUG_RAW_ID = rawid;
     }
 
 
+    //请求的返回方法
     private Response getResponse(Chain chain, String json){
         return new Response.Builder()
                 .code(200)
@@ -38,7 +39,7 @@ public class DebugInteceptor extends BaseInterceptor {
     }
 
 
-    private Response debugResponse(Chain chain,@RawRes int rawId){
+    private Response debugResponse(Chain chain,@RawRes int rawId){ //使用注解 检查类型
         final String json = FileUtil.getRawFile(rawId);
         return  getResponse(chain,json);
     }
@@ -46,10 +47,10 @@ public class DebugInteceptor extends BaseInterceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         final String url = chain.request().url().toString();
-        if (url.contains(DEBUG_URL)) {
+        if (url.contains(DEBUG_URL)) {  //如果包含关键字，返回相应的数据
             return debugResponse(chain,DEBUG_RAW_ID);
         }
-        return chain.proceed(chain.request());
+        return chain.proceed(chain.request());  //不包含关键字，原样返回
     }
 }
 

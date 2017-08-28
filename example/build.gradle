@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "org.ian.myec.simple"
+        applicationId "org.ian.myec.example"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -24,4 +24,6 @@ dependencies {
     compile project(':storm-ec')
     //compile project(':storm-compiler')
     annotationProcessor project(':storm-compiler')
+    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'  //原生渲染成dom
+    compile 'com.facebook.stetho:stetho:1.5.0'
 }

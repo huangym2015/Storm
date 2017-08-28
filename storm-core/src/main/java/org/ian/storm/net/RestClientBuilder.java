@@ -6,7 +6,7 @@ import org.ian.storm.net.callback.IError;
 import org.ian.storm.net.callback.IFailure;
 import org.ian.storm.net.callback.IRequest;
 import org.ian.storm.net.callback.ISuccess;
-import org.ian.storm.ui.LoaderStyle;
+import org.ian.storm.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

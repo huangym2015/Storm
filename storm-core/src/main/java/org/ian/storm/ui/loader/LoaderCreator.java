@@ -1,4 +1,4 @@
-package org.ian.storm.ui;
+package org.ian.storm.ui.loader;
 
 import android.content.Context;
 

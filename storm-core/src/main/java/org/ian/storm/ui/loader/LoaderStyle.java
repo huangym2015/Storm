@@ -1,4 +1,4 @@
-package org.ian.storm.ui;
+package org.ian.storm.ui.loader;
 
 /**
  * Created by ian on 2017/8/19.

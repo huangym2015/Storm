@@ -3,8 +3,8 @@ package org.ian.storm.net.callback;
 
 import android.os.Handler;
 
-import org.ian.storm.ui.LoaderStyle;
-import org.ian.storm.ui.StormLoader;
+import org.ian.storm.ui.loader.LoaderStyle;
+import org.ian.storm.ui.loader.StormLoader;
 
 import retrofit2.Call;
 import retrofit2.Callback;
