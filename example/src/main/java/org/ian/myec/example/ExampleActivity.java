@@ -9,6 +9,7 @@ import org.ian.storm.activites.ProxyActivity;
 import org.ian.storm.app.Storm;
 import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.ec.launcher.LauncherDeleaget;
+import org.ian.storm.ec.main.EcBottomDelegate;
 import org.ian.storm.ec.sign.ISignListener;
 import org.ian.storm.ec.sign.SignInDelegate;
 import org.ian.storm.ui.launcher.ILauncherListener;
@@ -52,7 +53,8 @@ public class ExampleActivity extends ProxyActivity implements
         switch (tag){
             case SIGNED:
                 Toast.makeText(this,"启动结束，用户登陆了",Toast.LENGTH_LONG).show();
-                startWithPop(new ExampleDelegate());
+                //startWithPop(new ExampleDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this,"启动结束，用户没登陆",Toast.LENGTH_LONG).show();

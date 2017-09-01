@@ -66,7 +66,7 @@ public class SignInDelegate extends StormDelegate {
                     .error(new IError() {
                         @Override
                         public void onError(int code, String message) {
-                            Toast.makeText(getContext(),message,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),"error"+message,Toast.LENGTH_LONG).show();
                         }
                     })
                     .build()
