@@ -1,5 +1,7 @@
 package org.ian.storm.app;
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -68,6 +70,20 @@ public class Configurator {
     public final Configurator withInterceptors(ArrayList<Interceptor> interceptors){
         INTERCEPTORS.addAll(interceptors);
         STORM_CONFIGS.put(ConfigKeys.INTERCEPTOR,INTERCEPTORS);
+        return this;
+    }
+
+
+    public final Configurator withWeChatAppId(String appId){
+        STORM_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID,appId);
+        return this;
+    }
+    public final Configurator withWeChatAppSecret(String appSecret){
+        STORM_CONFIGS.put(ConfigKeys.WA_CHAT_APP_SECRET,appSecret);
+        return this;
+    }
+    public final Configurator withActivity(Activity  activity){
+        STORM_CONFIGS.put(ConfigKeys.ACTIVITY,activity);
         return this;
     }
 

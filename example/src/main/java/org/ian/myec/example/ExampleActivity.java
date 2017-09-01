@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import org.ian.storm.activites.ProxyActivity;
+import org.ian.storm.app.Storm;
 import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.ec.launcher.LauncherDeleaget;
 import org.ian.storm.ec.sign.ISignListener;
@@ -24,6 +25,7 @@ public class ExampleActivity extends ProxyActivity implements
         if (actionBar != null) {
             actionBar.hide();
         }
+        Storm.getConfigurator().withActivity(this); //获取全局activity
     }
 
     @Override

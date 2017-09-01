@@ -112,7 +112,8 @@ public class LauncherDeleaget extends StormDelegate implements ITimerListener {
                         if (mTimer != null) {
                             mTimer.cancel();
                             mTimer = null;
-                            Toast.makeText(getContext(), "cancel", Toast.LENGTH_LONG).show();
+                            //时间到了，关闭此页面，判断是否启动轮播页面
+//                          Toast.makeText(getContext(), "cancel", Toast.LENGTH_LONG).show();
                             checkIsShowScroll();
                         }
                     }

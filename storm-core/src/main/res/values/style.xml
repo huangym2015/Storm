@@ -17,4 +17,22 @@
         <!--全屏幕-->
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <!--透明Activity-->
+    <style name="Theme.AppCompat.Translucent">
+        <item name="windowNoTitle">true</item>
+        <item name="windowBackground">@android:color/transparent</item>
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
 </resources>
+
+
+
+
+
+
+
+
+

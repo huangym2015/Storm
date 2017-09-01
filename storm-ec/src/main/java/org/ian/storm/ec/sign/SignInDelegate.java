@@ -16,6 +16,8 @@ import org.ian.storm.net.RestClient;
 import org.ian.storm.net.callback.IError;
 import org.ian.storm.net.callback.IFailure;
 import org.ian.storm.net.callback.ISuccess;
+import org.ian.storm.wechat.StormWeChat;
+import org.ian.storm.wechat.callbacks.IWeChatSigInCallback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -94,6 +96,19 @@ public class SignInDelegate extends StormDelegate {
         }
 
         return isPass;
+    }
+
+    /**
+     * 微信登陆点击事件，使用前需要在配置APP_ID,APP_SECRET
+     */
+    @OnClick(R2.id.icon_sign_in_wechat)
+    void onClickWeChat(){
+        StormWeChat.getInstance().onSigInSucess(new IWeChatSigInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
+
+            }
+        }).signIn();
     }
 
     @OnClick(R2.id.tv_link_sign_up)
