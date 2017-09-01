@@ -24,7 +24,8 @@
             android:label="微信回调"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Translucent"><!--单例启动-->
+            android:theme="@style/Theme.AppCompat.Translucent"
+            ><!--单例启动-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

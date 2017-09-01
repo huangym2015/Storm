@@ -23,9 +23,9 @@ public class ExampleApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withApiHost("http://127.0.0.1/")
-                .withInterceptor(new DebugInterceptor("index",R.raw.test)) //拦截器必须添加，否则会报错！这个是个坑！
-//                .withWeChatAppId("") //微信appid
-//                .withWeChatAppSecret("")//微信appsecret
+                .withInterceptor(new DebugInterceptor("index", R.raw.test)) //拦截器必须添加，否则会报错！这个是个坑！
+                .withWeChatAppId("") //微信appid
+                .withWeChatAppSecret("")//微信appsecret
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);//
