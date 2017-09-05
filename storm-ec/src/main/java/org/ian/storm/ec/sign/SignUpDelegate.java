@@ -51,7 +51,7 @@ public class SignUpDelegate extends StormDelegate {
     void onClickSignUp(){
        if (checkForm()){
             RestClient.builder()
-                    .url("http://192.168.1.113:8080/json/json1.do")
+                    .url("http://192.168.1.113:8080/json/JsonServlet")
                     .params("name",mName.getText().toString())
                     .params("email",mEmail.getText().toString())
                     .params("phone",mPhone.getText().toString())

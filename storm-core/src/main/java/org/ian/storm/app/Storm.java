@@ -1,6 +1,7 @@
 package org.ian.storm.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 /**
  * Created by ian on 2017/8/15.
@@ -28,6 +29,10 @@ public final class Storm {
     public static Context getApplicationContext(){
         //return (Context) getConfigurations().get(ConfigKeys.APPLICATION_CONTEXT.name());
         return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
+    }
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigKeys.HANDLER);
     }
 }
 

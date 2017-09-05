@@ -13,4 +13,5 @@ public enum ConfigKeys {
     WE_CHAT_APP_ID,  //微信登陆IP
     WA_CHAT_APP_SECRET, //微信登陆密钥
     ACTIVITY,
+    HANDLER,
 }

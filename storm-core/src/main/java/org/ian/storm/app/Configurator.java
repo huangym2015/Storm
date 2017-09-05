@@ -1,6 +1,7 @@
 package org.ian.storm.app;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -20,9 +21,11 @@ public class Configurator {
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>(); //存放图标字体
 
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();  //拦截器
+    private static final Handler HANDLER = new Handler();
 
     private Configurator(){
         STORM_CONFIGS.put(ConfigKeys.CONFIG_READY,false);
+        STORM_CONFIGS.put(ConfigKeys.HANDLER,HANDLER);
     }
 
     public static Configurator getInstance(){
