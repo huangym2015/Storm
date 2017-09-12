@@ -2,8 +2,10 @@ package org.ian.storm.ec.main.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +15,8 @@ import com.joanzapata.iconify.widget.IconTextView;
 import org.ian.storm.delegates.bottom.BottomItemDelegate;
 import org.ian.storm.ec.R;
 import org.ian.storm.ec.R2;
+import org.ian.storm.ec.main.EcBottomDelegate;
+import org.ian.storm.ui.recycler.BaseDecoration;
 import org.ian.storm.ui.refresh.RefreshHandler;
 
 import butterknife.BindView;
@@ -39,7 +43,10 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mRefreshHandler = new RefreshHandler(mRefreshLayout); //初始化
+
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
+
+
     }
 
     private void initRefreshLayout() {
@@ -51,10 +58,22 @@ public class IndexDelegate extends BottomItemDelegate {
         mRefreshLayout.setProgressViewOffset(true, 120, 300);  //true 刷新球会变化由小变大，120起始高度，300最大下降高度
     }
 
+    private void initRecyclerView() {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4); //网格布局
+        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.addItemDecoration(
+                BaseDecoration.create(ContextCompat.getColor(getContext(),R.color.app_background),5));
+
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
+    }
+
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
+        initRecyclerView();
+        mRefreshHandler.firstPage("JsonServlet?action=index_data"); //获取数据
     }
 
     @Override

@@ -15,6 +15,8 @@ import org.ian.storm.ec.sign.SignInDelegate;
 import org.ian.storm.ui.launcher.ILauncherListener;
 import org.ian.storm.ui.launcher.OnLauncherFinishTag;
 
+import qiu.niorgai.StatusBarCompat;
+
 public class ExampleActivity extends ProxyActivity implements
         ISignListener,
         ILauncherListener{
@@ -27,6 +29,7 @@ public class ExampleActivity extends ProxyActivity implements
             actionBar.hide();
         }
         Storm.getConfigurator().withActivity(this); //获取全局activity
+        StatusBarCompat.translucentStatusBar(this,true);
     }
 
     @Override
@@ -52,12 +55,12 @@ public class ExampleActivity extends ProxyActivity implements
         //判断启动的时候，轮播图怎么调用
         switch (tag){
             case SIGNED:
-                Toast.makeText(this,"启动结束，用户登陆了",Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"启动结束，用户登陆了",Toast.LENGTH_LONG).show();
                 //startWithPop(new ExampleDelegate());
                 startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                Toast.makeText(this,"启动结束，用户没登陆",Toast.LENGTH_LONG).show();
+               //Toast.makeText(this,"启动结束，用户没登陆",Toast.LENGTH_LONG).show();
                 startWithPop(new SignInDelegate());
                 break;
             default:

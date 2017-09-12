@@ -12,6 +12,7 @@ import android.widget.Toast;
 import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.ec.R;
 import org.ian.storm.ec.R2;
+import org.ian.storm.ec.main.EcBottomDelegate;
 import org.ian.storm.net.RestClient;
 import org.ian.storm.net.callback.IError;
 import org.ian.storm.net.callback.IFailure;
@@ -47,7 +48,7 @@ public class SignInDelegate extends StormDelegate {
     void onClickSignIn(){
         if (checkForm()){
             RestClient.builder()
-                    .url("http://192.168.1.113:8080/json/JsonServlet")
+                    .url("http://192.168.1.199:8080/json/JsonServlet?action=data")
                     .params("email",mEmail.getText().toString())
                     .params("password",mPassword.getText().toString())
                     .success(new ISuccess() {
@@ -55,6 +56,7 @@ public class SignInDelegate extends StormDelegate {
                         public void onSuccess(String response) {
                             Log.e("USER_PROFILE",response);
                             SignHandler.onSignIn(response,mISignListener); //返回的数据存入数据库
+                            startWithPop(new EcBottomDelegate()); //登录成功跳转到首页
                         }
                     })
                     .failure(new IFailure() {

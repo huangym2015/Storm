@@ -1,6 +1,7 @@
 package org.ian.storm.net.interceptors;
 
 import android.support.annotation.RawRes;
+import android.util.Log;
 
 import org.ian.storm.util.file.FileUtil;
 
@@ -47,6 +48,7 @@ public class DebugInterceptor extends BaseInterceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         final String url = chain.request().url().toString();
+        Log.e("Ian",url);
         if (url.contains(DEBUG_URL)) {  //如果包含关键字，返回相应的数据
             return debugResponse(chain,DEBUG_RAW_ID);
         }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
-import android.widget.Toast;
 
 import org.ian.storm.app.AccountManager;
 import org.ian.storm.app.IUserChecker;
@@ -80,7 +79,7 @@ public class LauncherDeleaget extends StormDelegate implements ITimerListener {
         if (mTimer != null) { //判断对象是否存在
             mTimer.cancel();
             mTimer = null;
-            Toast.makeText(getContext(), "clickTimeView", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getContext(), "clickTimeView", Toast.LENGTH_LONG).show();
             checkIsShowScroll();
         }
     }

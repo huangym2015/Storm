@@ -1,24 +1,52 @@
 package org.ian.storm.ui.refresh;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.ian.storm.app.Storm;
+import org.ian.storm.net.RestClient;
+import org.ian.storm.net.callback.IError;
+import org.ian.storm.net.callback.IFailure;
+import org.ian.storm.net.callback.ISuccess;
+import org.ian.storm.ui.recycler.DataConverter;
+import org.ian.storm.ui.recycler.MultipleRecyclerAdapter;
 
 /**
  * Created by ian on 2017/9/5.
  */
 
 //刷新
-public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
+public class RefreshHandler implements
+        SwipeRefreshLayout.OnRefreshListener,
+        BaseQuickAdapter.RequestLoadMoreListener{
 
-    private final  SwipeRefreshLayout REFRESH_LAYOUT;
+    private final SwipeRefreshLayout REFRESH_LAYOUT;
+    private final PagingBean BEAN;
+    private final RecyclerView RECYCLERVIEW;
+    private MultipleRecyclerAdapter mAdapter = null;
+    private final DataConverter CONVERTER;
 
-    public RefreshHandler(SwipeRefreshLayout REFRESH_LAYOUT) {
-        this.REFRESH_LAYOUT = REFRESH_LAYOUT;
+    public RefreshHandler(SwipeRefreshLayout swipeRefreshLayout, RecyclerView recyclerView,
+                          DataConverter converter, PagingBean pagingBean) {
+        this.REFRESH_LAYOUT = swipeRefreshLayout;
+        this.RECYCLERVIEW = recyclerView;
+        this.CONVERTER = converter;
+        this.BEAN = pagingBean;
         REFRESH_LAYOUT.setOnRefreshListener(this); //监听滑动事件
     }
 
-    private  void refesh(){
+    public static RefreshHandler create(SwipeRefreshLayout swipeRefreshLayout, RecyclerView recyclerView,
+                                        DataConverter converter) {
+        return new RefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
+
+    }
+
+    private void refesh() {
         REFRESH_LAYOUT.setRefreshing(true); //开始加载
         Storm.getHandler().postDelayed(new Runnable() {
             @Override
@@ -28,10 +56,54 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
                  */
                 REFRESH_LAYOUT.setRefreshing(false);
             }
-        },2000);
+        }, 2000);
     }
+
+
+    //取得首页展示的数据
+    public void firstPage(String url) {
+        BEAN.setDelayed(1000);
+
+        RestClient.builder()
+                .url(url)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        Log.e("Ian", "success");
+                        final JSONObject object = JSON.parseObject(response);
+                        Log.e("Ian",""+object.getInteger("total")+":"+object.getInteger("page_size"));
+                        BEAN.setTotal(object.getInteger("total"))
+                                .setPageSize(object.getInteger("page_size"));
+                        //设置Adapter
+                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
+                        mAdapter.setOnLoadMoreListener(RefreshHandler.this,RECYCLERVIEW);
+                        RECYCLERVIEW.setAdapter(mAdapter);
+                        BEAN.addIndex();
+                    }
+                })
+                .failure(new IFailure() {
+                    @Override
+                    public void onFailure() {
+                        Log.e("Ian", "failure");
+                    }
+                })
+                .error(new IError() {
+                    @Override
+                    public void onError(int code, String message) {
+                        Log.e("Ian", "error");
+                    }
+                })
+                .build()
+                .get();
+    }
+
     @Override
     public void onRefresh() {
         refesh();
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+
     }
 }

@@ -4,7 +4,7 @@ buildscript {
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
         //maven{ url 'http://repo1.maven.org/maven2'}
-        //jcenter()  //阿里云镜像 jcenter
+        jcenter()  //阿里云镜像 jcenter
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -17,9 +17,16 @@ buildscript {
 
 allprojects {
     repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+
+        }
+        //GitHub上比较牛的RecycleView的框架
+        maven {
+            url 'https://jitpack.io'
+        }
         //maven{ url 'http://repo1.maven.org/maven2'}
-        //jcenter()//阿里云镜像 jcenter
+        jcenter()//阿里云镜像 jcenter
 
         mavenCentral()  //ButterKnife
     }

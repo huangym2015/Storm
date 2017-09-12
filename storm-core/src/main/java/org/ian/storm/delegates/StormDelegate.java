@@ -5,4 +5,8 @@ package org.ian.storm.delegates;
  */
 
 public abstract class StormDelegate extends PermissionCheckerDelegate {
+    @SuppressWarnings("unchecked")
+    public <T extends StormDelegate> T getParentDelegate(){
+        return (T) getParentFragment();
+    }
 }

@@ -51,7 +51,7 @@ public class SignUpDelegate extends StormDelegate {
     void onClickSignUp(){
        if (checkForm()){
             RestClient.builder()
-                    .url("http://192.168.1.113:8080/json/JsonServlet")
+                    .url("http://192.168.1.199:8080/json/JsonServlet?action=data")
                     .params("name",mName.getText().toString())
                     .params("email",mEmail.getText().toString())
                     .params("phone",mPhone.getText().toString())
@@ -61,6 +61,7 @@ public class SignUpDelegate extends StormDelegate {
                         public void onSuccess(String response) {
                             Log.e("USER_PROFILE",response);
                             SignHandler.onSignUp(response,mISignListener); //返回的数据存入数据库
+                            startWithPop(new SignInDelegate()); //注册成功，转到登录页面
                         }
                     })
                     .failure(new IFailure() {
