@@ -14,9 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="发现"
             android:paddingTop="6dp"
+            android:text="@string/discover"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.ContentFrameLayout
+        android:id="@+id/web_discovery_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
