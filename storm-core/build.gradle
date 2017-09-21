@@ -12,7 +12,6 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -37,7 +36,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
     //字体图标
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
@@ -74,11 +72,12 @@ dependencies {
     //RecyclerView分割线
     compile 'com.choices.divider:RecyclerView_Divider:1.0.0'
     //图片处理glide
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:4.0.0-RC0@aar'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     //沉浸式状态栏
-    compile('com.github.niorgai:StatusBarCompat:2.1.3',{
-        exclude group:'com.andorid.support'
+    compile('com.github.niorgai:StatusBarCompat:2.1.3', {
+        exclude group: 'com.andorid.support'
     })
     //Google AutoValue
     provided "com.google.auto.value:auto-value:1.2"  //编译期间使用，打包是该代码被废弃
