@@ -20,6 +20,8 @@ public abstract class WebDelegate extends StormDelegate implements IWebViewIniti
     private final ReferenceQueue<WebView> WEB_VIEW_QUEUE = new ReferenceQueue<>();
     private String mUrl = null;
     private boolean mIsWebViewAvailable = false;
+    private StormDelegate mTopDelegate =null;
+
 
     public WebDelegate() {
     }
@@ -55,6 +57,17 @@ public abstract class WebDelegate extends StormDelegate implements IWebViewIniti
                 throw new NullPointerException("Initializer is null");
             }
         }
+    }
+
+    public void setTopDelegate(StormDelegate delegate){
+        this.mTopDelegate = delegate;
+    }
+
+    public StormDelegate getTopDelegate(){
+        if (mTopDelegate==null){
+            mTopDelegate=this;
+        }
+        return mTopDelegate;
     }
 
     public WebView getWebView() {

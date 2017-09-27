@@ -34,14 +34,12 @@ public class Router {
             callPhone(delegate.getContext(), url);
             return true;
         }
+        final StormDelegate topDelegate = delegate.getTopDelegate();
 
-        final StormDelegate parentDelegate = delegate.getParentDelegate();
         final WebDelegateImpl webDelegate = WebDelegateImpl.create(url);
-        if (parentDelegate == null) {
-            delegate.start(webDelegate);
-        } else {
-            parentDelegate.start(webDelegate);
-        }
+
+        topDelegate.start(webDelegate);
+
         return true;
     }
 
@@ -66,8 +64,8 @@ public class Router {
         }
     }
 
-    public final void loadPage(WebDelegate webDelegate, String url){
-        loadPage(webDelegate.getWebView(),url);
+    public final void loadPage(WebDelegate webDelegate, String url) {
+        loadPage(webDelegate.getWebView(), url);
     }
 
     private void callPhone(Context context, String uri) {
