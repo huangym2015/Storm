@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
+import org.ian.myec.example.event.TestEvent;
 import org.ian.storm.app.Storm;
 import org.ian.storm.ec.database.DatabaseManager;
 import org.ian.storm.ec.icon.FontEcModule;
@@ -27,6 +28,8 @@ public class ExampleApp extends Application{
                 .withInterceptor(new DebugInterceptor("test", R.raw.test)) //拦截器必须添加，否则会报错！这个是个坑！
                 .withWeChatAppId("") //微信appid
                 .withWeChatAppSecret("")//微信appsecret
+                .withJavascriptInterface("storm")
+                .withWebEvent("test",new TestEvent())
                 .configure();
         //initStetho();
         DatabaseManager.getInstance().init(this);//

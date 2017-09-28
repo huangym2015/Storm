@@ -1,5 +1,6 @@
 package org.ian.storm.delegates.web;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -9,6 +10,8 @@ import android.webkit.WebView;
  */
 
 public class WebViewInitializer {
+
+    @SuppressLint("SetJavaScriptEnabled")
     public WebView createWebView(WebView webView){
         WebView.setWebContentsDebuggingEnabled(true);
         //不能横向滚动
@@ -25,8 +28,9 @@ public class WebViewInitializer {
             }
         });
 
-        //初始化WebSetttings
+        //初始化WebSettings
         final WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
         final String ua = settings.getUserAgentString();
         settings.setUserAgentString(ua+"Storm");
         //不能缩放

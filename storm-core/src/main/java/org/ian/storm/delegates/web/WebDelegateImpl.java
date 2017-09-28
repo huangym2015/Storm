@@ -1,12 +1,15 @@
 package org.ian.storm.delegates.web;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.ian.storm.app.Storm;
+import org.ian.storm.delegates.IPageLoadListener;
 import org.ian.storm.delegates.web.chromeclient.WebChromeClientImpl;
 import org.ian.storm.delegates.web.client.WebViewClientImpl;
 import org.ian.storm.delegates.web.route.RouteKeys;
@@ -17,6 +20,12 @@ import org.ian.storm.delegates.web.route.Router;
  */
 
 public class WebDelegateImpl extends WebDelegate {
+
+    private IPageLoadListener mIPageLoadListener =null;
+
+
+
+
     public static WebDelegateImpl create(String url) {
         final Bundle args = new Bundle();
         args.putString(RouteKeys.URL.name(), url);
@@ -25,6 +34,10 @@ public class WebDelegateImpl extends WebDelegate {
         return delegate;
     }
 
+
+    public void setPageLoadListener(IPageLoadListener listener){
+        this.mIPageLoadListener=listener;
+    }
 
     @Override
     public Object setLayout() {
@@ -53,6 +66,7 @@ public class WebDelegateImpl extends WebDelegate {
     @Override
     public WebViewClient initWebViewClient() {
         final WebViewClientImpl client = new WebViewClientImpl(this);
+        client.setPageLoadListener(mIPageLoadListener);
         return client;
     }
 

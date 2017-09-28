@@ -14,4 +14,5 @@ public enum ConfigKeys {
     WA_CHAT_APP_SECRET, //微信登陆密钥
     ACTIVITY,
     HANDLER,
+    JAVASCRIPT_INTERFACE,
 }

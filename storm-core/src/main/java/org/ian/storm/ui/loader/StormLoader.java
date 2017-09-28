@@ -46,7 +46,7 @@ public class StormLoader {
         //创建window对象
         final Window dialogWindow = dialog.getWindow();
         if (dialogWindow != null) {
-            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            final WindowManager.LayoutParams lp = dialogWindow.getAttributes();
             //宽和高缩小8倍
             lp.width = deviceWidth / LOADER_SIZE_SCALE;
             lp.height = deviceHeight / LOADER_SIZE_SCALE;

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.webkit.WebView;
 
+import org.ian.storm.app.ConfigKeys;
+import org.ian.storm.app.Storm;
 import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.delegates.web.route.RouteKeys;
 
@@ -51,7 +53,8 @@ public abstract class WebDelegate extends StormDelegate implements IWebViewIniti
                 mWebView = initializer.initWebView(mWebView);
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());
-                mWebView.addJavascriptInterface(StormWebInterface.create(this), "storm");
+                final String name = Storm.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);
+                mWebView.addJavascriptInterface(StormWebInterface.create(this), name);
                 mIsWebViewAvailable = true;
             } else {
                 throw new NullPointerException("Initializer is null");
