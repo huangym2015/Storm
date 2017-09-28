@@ -109,6 +109,12 @@ public class Configurator {
         manager.addEvent(name,event);
         return this;
     }
+    //浏览器加载的HOST
+    public Configurator withWebHost(String host) {
+        STORM_CONFIGS.put(ConfigKeys.WEB_HOST, host);
+        return this;
+    }
+
 
     //进行设置检测
     private void checkConfiguration() {

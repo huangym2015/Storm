@@ -10,6 +10,7 @@ import org.ian.storm.app.Storm;
 import org.ian.storm.ec.database.DatabaseManager;
 import org.ian.storm.ec.icon.FontEcModule;
 import org.ian.storm.net.interceptors.DebugInterceptor;
+import org.ian.storm.net.rx.AddCookieInterceptor;
 
 /**
  * Created by ian on 2017/8/15.
@@ -30,6 +31,9 @@ public class ExampleApp extends Application{
                 .withWeChatAppSecret("")//微信appsecret
                 .withJavascriptInterface("storm")
                 .withWebEvent("test",new TestEvent())
+                //添加Cookie同步拦截器
+                .withWebHost("http://www.baidu.com/")
+                .withInterceptor(new AddCookieInterceptor())
                 .configure();
         //initStetho();
         DatabaseManager.getInstance().init(this);//

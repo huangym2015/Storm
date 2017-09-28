@@ -15,4 +15,5 @@ public enum ConfigKeys {
     ACTIVITY,
     HANDLER,
     JAVASCRIPT_INTERFACE,
+    WEB_HOST,
 }
