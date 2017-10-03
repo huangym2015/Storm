@@ -12,4 +12,10 @@
     <string name="search_index">搜索</string>
     <string name="sort">分类</string>
     <string name="discover">发现</string>
+    <string name="clear">清空</string>
+    <string name="shop_cart">购物车</string>
+    <string name="remove_selected">删除</string>
+    <string name="shop_cart_sum">合计</string>
+    <string name="shop_cart_selectAll">全选</string>
+    <string name="shop_cart_checkSum">结算</string>
 </resources>

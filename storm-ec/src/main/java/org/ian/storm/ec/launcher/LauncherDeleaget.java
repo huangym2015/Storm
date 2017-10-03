@@ -53,7 +53,7 @@ public class LauncherDeleaget extends StormDelegate implements ITimerListener {
     //判断是否显示滑动启动页
     private void checkIsShowScroll() {
         if (!StormPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
-            start(new LauncherScrollDelegate(), SINGLETASK);
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             //检查用户是否已经登录APP
             AccountManager.checkAccount(new IUserChecker() {

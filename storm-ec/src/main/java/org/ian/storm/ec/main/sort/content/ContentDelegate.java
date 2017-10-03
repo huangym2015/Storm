@@ -64,7 +64,10 @@ public class ContentDelegate extends StormDelegate {
                         final SectionAdapter sectionAdapter =
                                 new SectionAdapter(R.layout.item_section_content,
                                         R.layout.item_section_header,mData);
-                        mRecyclerView.setAdapter(sectionAdapter);
+                        if (mRecyclerView!=null){
+                            mRecyclerView.setAdapter(sectionAdapter);
+                        }
+
                     }
                 })
                 .error(new IError() {

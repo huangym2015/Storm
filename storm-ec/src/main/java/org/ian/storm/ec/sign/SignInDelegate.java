@@ -56,7 +56,7 @@ public class SignInDelegate extends StormDelegate {
                         public void onSuccess(String response) {
                             Log.e("USER_PROFILE",response);
                             SignHandler.onSignIn(response,mISignListener); //返回的数据存入数据库
-                            startWithPop(new EcBottomDelegate()); //登录成功跳转到首页
+                            getSupportDelegate().startWithPop(new EcBottomDelegate()); //登录成功跳转到首页
                         }
                     })
                     .failure(new IFailure() {
@@ -115,7 +115,7 @@ public class SignInDelegate extends StormDelegate {
 
     @OnClick(R2.id.tv_link_sign_up)
     void onClickLink(){
-        start(new SignUpDelegate());
+        getSupportDelegate().start(new SignUpDelegate());
     }
 
 
