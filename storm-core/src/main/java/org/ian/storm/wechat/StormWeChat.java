@@ -40,6 +40,7 @@ public class StormWeChat {
         return WXAPI;
     }
 
+
     public StormWeChat onSigInSucess(IWeChatSigInCallback callback){
         this.mSigInCallback =callback;
         return this;

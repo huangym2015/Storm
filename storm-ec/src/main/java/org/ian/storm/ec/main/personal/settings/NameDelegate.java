@@ -1,21 +1,20 @@
-package org.ian.storm.ec.main.user;
+package org.ian.storm.ec.main.personal.settings;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import org.ian.storm.delegates.bottom.BottomItemDelegate;
+import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.ec.R;
 
 /**
- * Created by ian on 2017/9/1.
+ * Created by ian on 2017/10/10.
  */
 
-//首页
-public class UserDelegate extends BottomItemDelegate{
+public class NameDelegate  extends StormDelegate{
     @Override
     public Object setLayout() {
-        return R.layout.delegate_user;
+        return R.layout.delegate_name;
     }
 
     @Override

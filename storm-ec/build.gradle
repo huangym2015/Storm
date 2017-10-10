@@ -31,4 +31,7 @@ dependencies {
     compile project(':storm-core')
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile files('libs/alipay-sdk-java20170829142630.jar')
+    compile files('libs/alipaySdk-20161222.jar')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

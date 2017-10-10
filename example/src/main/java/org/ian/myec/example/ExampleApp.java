@@ -24,6 +24,7 @@ public class ExampleApp extends Application{
         Storm.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
+                //.withApiHost("http://192.168.8.112:8080/json/")
                 .withApiHost("http://192.168.1.199:8080/json/")
                // .withApiHost("http://172.16.22.3:8080/json/")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test)) //拦截器必须添加，否则会报错！这个是个坑！

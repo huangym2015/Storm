@@ -128,8 +128,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="￥0.001"
-                android:textColor="@android:color/darker_gray"
+                android:text="￥0.00"
+                android:textColor="@color/app_main"
                 android:textSize="20sp" />
 
         </android.support.v7.widget.LinearLayoutCompat>

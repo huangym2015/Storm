@@ -9,8 +9,8 @@ import org.ian.storm.delegates.bottom.ItemBuilder;
 import org.ian.storm.ec.main.cart.ShopCartDelegate;
 import org.ian.storm.ec.main.discover.DiscoverDelegate;
 import org.ian.storm.ec.main.index.IndexDelegate;
+import org.ian.storm.ec.main.personal.PersonalDelegate;
 import org.ian.storm.ec.main.sort.SortDelegate;
-import org.ian.storm.ec.main.user.UserDelegate;
 
 import java.util.LinkedHashMap;
 
@@ -28,7 +28,7 @@ public class EcBottomDelegate extends BaseBottomDelegate {
         items.put(new BottomTabBean("{fa-sort}","分类"),new SortDelegate());
         items.put(new BottomTabBean("{fa-compass}","发现"),new DiscoverDelegate());
         items.put(new BottomTabBean("{fa-shopping-cart}","购物车"),new ShopCartDelegate());
-        items.put(new BottomTabBean("{fa-user}","我的"),new UserDelegate());
+        items.put(new BottomTabBean("{fa-user}","我的"),new PersonalDelegate());
         return builder.addItems(items).build();
     }
 

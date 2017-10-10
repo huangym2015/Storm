@@ -6,6 +6,7 @@ package org.ian.storm.ui.recycler;
 
 public enum MultipleFields {
     ITEM_TYPE,
+    TITLE,
     TEXT,
     IMAGE_URL,
     BANNERS,
