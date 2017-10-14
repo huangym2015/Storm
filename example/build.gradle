@@ -11,6 +11,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "918d5d0517d5838f593caee3",
+                JPUSH_CHANNEL: "developer-default",
+        ]
     }
     buildTypes {
         release {
@@ -33,4 +39,8 @@ dependencies {
     //原生渲染成dom
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile project(path: ':storm-annotations')
+
+
+    compile 'cn.jiguang.sdk:jpush:3.0.1'
+    compile 'cn.jiguang.sdk:jcore:1.1.0'
 }

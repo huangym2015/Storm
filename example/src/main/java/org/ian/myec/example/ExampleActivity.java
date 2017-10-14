@@ -15,6 +15,7 @@ import org.ian.storm.ec.sign.SignInDelegate;
 import org.ian.storm.ui.launcher.ILauncherListener;
 import org.ian.storm.ui.launcher.OnLauncherFinishTag;
 
+import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements
@@ -30,6 +31,18 @@ public class ExampleActivity extends ProxyActivity implements
         }
         Storm.getConfigurator().withActivity(this); //获取全局activity
         StatusBarCompat.translucentStatusBar(this,true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
     }
 
     @Override

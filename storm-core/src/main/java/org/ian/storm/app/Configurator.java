@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
+import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
 import org.ian.storm.delegates.web.event.Event;
 import org.ian.storm.delegates.web.event.EventManager;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -48,6 +48,7 @@ public class Configurator {
     public final void configure() {
         initIcons();
         STORM_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
+        Utils.init(Storm.getApplicationContext()); //初始化工具类
     }
 
     public final Configurator withApiHost(String host) {

@@ -33,12 +33,12 @@ public class ListBean implements MultiItemEntity {
     }
 
 
-    public String getmImageUrl() {
+    public String getImageUrl() {
         return mImageUrl;
     }
 
 
-    public String getmText() {
+    public String getText() {
         if (mText==null){
             return "";
         }
@@ -46,7 +46,7 @@ public class ListBean implements MultiItemEntity {
     }
 
 
-    public String getmValue() {
+    public String getValue() {
         if (mValue==null){
             return "";
         }
@@ -54,12 +54,12 @@ public class ListBean implements MultiItemEntity {
     }
 
 
-    public int getmId() {
+    public int getId() {
         return mId;
     }
 
 
-    public StormDelegate getmDelegate() {
+    public StormDelegate getDelegate() {
         return mDelegate;
     }
 

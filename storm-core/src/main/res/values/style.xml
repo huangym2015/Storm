@@ -27,6 +27,11 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 
+    <!--从底部弹出的窗口-->
+    <style name="anim_panel_up_from_bottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
 
 </resources>
 
