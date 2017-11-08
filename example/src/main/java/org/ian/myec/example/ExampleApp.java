@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
+import org.ian.myec.example.event.ShareEvent;
 import org.ian.myec.example.event.TestEvent;
 import org.ian.storm.app.Storm;
 import org.ian.storm.ec.database.DatabaseManager;
@@ -31,13 +32,15 @@ public class ExampleApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 //.withApiHost("http://192.168.8.112:8080/json/")
-                .withApiHost("http://192.168.1.199:8080/json/")
+               // .withApiHost("http://192.168.1.199:8080/json/")
+                .withApiHost("http://192.168.0.195:8080/json/")
                // .withApiHost("http://172.16.22.3:8080/json/")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test)) //拦截器必须添加，否则会报错！这个是个坑！
                 .withWeChatAppId("") //微信appid
                 .withWeChatAppSecret("")//微信appsecret
                 .withJavascriptInterface("storm")
                 .withWebEvent("test",new TestEvent())
+                .withWebEvent("share",new ShareEvent())
                 //添加Cookie同步拦截器
                 .withWebHost("http://www.baidu.com/")
                 .withInterceptor(new AddCookieInterceptor())

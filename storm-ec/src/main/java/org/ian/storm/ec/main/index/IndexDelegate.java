@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.joanzapata.iconify.widget.IconTextView;
 
@@ -16,17 +17,22 @@ import org.ian.storm.delegates.bottom.BottomItemDelegate;
 import org.ian.storm.ec.R;
 import org.ian.storm.ec.R2;
 import org.ian.storm.ec.main.EcBottomDelegate;
+import org.ian.storm.ec.main.index.search.SearchDelegate;
 import org.ian.storm.ui.recycler.BaseDecoration;
 import org.ian.storm.ui.refresh.RefreshHandler;
+import org.ian.storm.util.callback.CallbackManager;
+import org.ian.storm.util.callback.CallbackType;
+import org.ian.storm.util.callback.IGlobalCallback;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by ian on 2017/9/1.
  */
 
 //首页
-public class IndexDelegate extends BottomItemDelegate {
+public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener{
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView = null;
@@ -41,11 +47,23 @@ public class IndexDelegate extends BottomItemDelegate {
 
     private RefreshHandler mRefreshHandler = null;
 
+    @OnClick(R2.id.icon_index_scan)
+    void onClickScanQrCode(){
+        startScanWithCheck(this.getParentDelegate());
+    }
+
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
 
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
-
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
+                    @Override
+                    public void executeCallback(@Nullable String args) {
+                        Toast.makeText(getContext(),args,Toast.LENGTH_LONG).show();
+                    }
+                });
+        mSearchView.setOnFocusChangeListener(this);
 
     }
 
@@ -82,4 +100,10 @@ public class IndexDelegate extends BottomItemDelegate {
     }
 
 
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus){
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+        }
+    }
 }

@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import org.ian.storm.delegates.StormDelegate;
 import org.ian.storm.delegates.bottom.BottomItemDelegate;
-import org.ian.storm.delegates.web.WebDelegate;
 import org.ian.storm.delegates.web.WebDelegateImpl;
 import org.ian.storm.ec.R;
 
